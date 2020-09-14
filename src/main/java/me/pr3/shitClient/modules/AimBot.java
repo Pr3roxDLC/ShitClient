@@ -9,17 +9,18 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import org.apache.logging.log4j.Level;
 
 
-public class AimBot {
+public class AimBot extends Module{
 	
 	public static boolean enabled = false;
 	public static Entity[] entities = null;
-	
-	
-	public static void changeEnabled() {
-		
+
+	@Override
+	public void changeEnabled() {
+
 		enabled =!enabled;
 
 	}
+
 	
 	public static Entity getClosestEntity() {
 		float distance = Integer.MAX_VALUE;

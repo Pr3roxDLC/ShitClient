@@ -3,11 +3,12 @@ package me.pr3.shitClient.modules;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.PotionEffect;
 
-public class FullBright {
+public class FullBright extends Module {
 	
 	public static boolean enabled = false;
 
-	public static void ChangeEnabled() {
+	@Override
+	public void changeEnabled() {
 		
 		enabled = !enabled;
 		

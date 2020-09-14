@@ -1,7 +1,6 @@
 package me.pr3.shitClient;
 
 
-
 import me.pr3.shitClient.modules.AimBot;
 import me.pr3.shitClient.modules.ESP;
 import me.pr3.shitClient.modules.FullBright;
@@ -15,43 +14,42 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CommandHandler {
 
-	
-	
-	public CommandHandler() {
 
-		System.out.println("Registered CommandHandler");
-	}
-	
-	
-	
-	
-	@SubscribeEvent
-	public void onChat(ClientChatEvent e) {
-		
-		
-		
-		if(e.getMessage().charAt(0) == '+') {
+    public CommandHandler() {
 
-			String messageWithPrefix = e.getMessage();
-			String messageNoPrefix = messageWithPrefix.substring(1);
-			System.out.println("Client executed command " + messageNoPrefix);
-			
-			switch(messageNoPrefix) {
-			
-			case "esp":
-				ESP.ChangeEnable();
-			break;
-			case "fullbright":
-				FullBright.ChangeEnabled();
-			break;
-			case "aimbot":
-				AimBot.changeEnabled();
-			break;
-				
-			
-			}
-		e.setCanceled(true);
-		}
-	}
+        System.out.println("Registered CommandHandler");
+    }
+
+
+    @SubscribeEvent
+    public void onChat(ClientChatEvent e) {
+
+
+        if (e.getMessage().charAt(0) == '+') {
+
+            String messageWithPrefix = e.getMessage();
+            String messageNoPrefix = messageWithPrefix.substring(1);
+            System.out.println("Client executed command " + messageNoPrefix);
+
+            switch (messageNoPrefix) {
+
+                case "esp":
+                    Main.esp.changeEnabled();
+                    break;
+                case "fullbright":
+                    Main.fb.changeEnabled();
+                    break;
+                case "aimbot":
+                    Main.ab.changeEnabled();
+                    break;
+                case "watermark":
+                    Main.wm.changeEnabled();
+                    break;
+
+
+            }
+            e.setCanceled(true);
+        }
+    }
 
 }

@@ -2,6 +2,10 @@ package me.pr3.shitClient;
 
 
 
+import me.pr3.shitClient.modules.AimBot;
+import me.pr3.shitClient.modules.ESP;
+import me.pr3.shitClient.modules.FullBright;
+import me.pr3.shitClient.modules.WaterMark;
 import me.pr3.shitClient.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,6 +22,11 @@ import java.io.File;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION )
 public class Main {
+
+	public static AimBot ab = new AimBot();
+	public static ESP esp = new ESP();
+	public static FullBright fb = new FullBright();
+	public static WaterMark wm = new WaterMark();
 
 
 

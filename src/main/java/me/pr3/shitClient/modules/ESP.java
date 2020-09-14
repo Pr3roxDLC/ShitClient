@@ -6,7 +6,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class ESP {
+public class ESP extends Module{
 	
 	public ESP() {
 		
@@ -15,12 +15,7 @@ public class ESP {
 	}
 	private static boolean enabled = true;
 
-	public static void ChangeEnable() {
 
-		System.out.println("Changed ESP");
-		enabled = !enabled;
-
-	}
 
 	public static void onPlayerRender(LivingEvent e) {
 		
@@ -35,4 +30,9 @@ public class ESP {
 		
 	}
 
+	@Override
+	public void changeEnabled() {
+		System.out.println("Changed ESP");
+		enabled = !enabled;
+	}
 }
