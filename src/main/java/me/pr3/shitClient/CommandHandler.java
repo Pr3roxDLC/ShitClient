@@ -2,6 +2,7 @@ package me.pr3.shitClient;
 
 
 
+import me.pr3.shitClient.modules.AimBot;
 import me.pr3.shitClient.modules.ESP;
 import me.pr3.shitClient.modules.FullBright;
 import net.minecraft.client.Minecraft;
@@ -42,11 +43,14 @@ public class CommandHandler {
 			break;
 			case "fullbright":
 				FullBright.ChangeEnabled();
-				
+			break;
+			case "aimbot":
+				AimBot.changeEnabled();
+			break;
 				
 			
 			}
-			
+		e.setCanceled(true);
 		}
 	}
 

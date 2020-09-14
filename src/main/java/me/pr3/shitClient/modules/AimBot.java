@@ -2,6 +2,7 @@ package me.pr3.shitClient.modules;
 
 import me.pr3.shitClient.Main;
 import me.pr3.shitClient.util.Logger;
+import me.pr3.shitClient.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -39,16 +40,18 @@ public class AimBot {
 		return closestEntity;
 		
 	}
-	
+
+
 	public static void onLiving(LivingEvent e) {
-	if(Minecraft.getMinecraft().player == null)return;
-		Entity closestEnt = getClosestEntity();
+		if(enabled) {
+			if (Minecraft.getMinecraft().player == null) return;
+			Entity closestEnt = getClosestEntity();
 
 
-		if(closestEnt != null) {
-			Logger.logInfo(closestEnt.getName());
+			if (closestEnt != null) {
+				Utils.faceEntity(closestEnt, 15,15);
+			}
 		}
-		
 	}
 
 }
