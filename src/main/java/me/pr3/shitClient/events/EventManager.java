@@ -11,7 +11,7 @@ public class EventManager {
 
     public EventManager(){
 
-        MinecraftForge.EVENT_BUS.register(this);
+
 
     }
 
