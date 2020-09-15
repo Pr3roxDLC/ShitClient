@@ -2,6 +2,7 @@ package me.pr3.shitClient;
 
 
 import com.google.common.eventbus.EventBus;
+import me.pr3.shitClient.events.EventManager;
 import me.pr3.shitClient.modules.ModuleManager;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,6 +44,8 @@ public class Main {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 
+
+		MinecraftForge.EVENT_BUS.register(new EventManager());
 
 		ModuleManager.initModules();
 
