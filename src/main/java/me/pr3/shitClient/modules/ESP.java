@@ -1,5 +1,6 @@
 package me.pr3.shitClient.modules;
 
+import com.google.common.eventbus.Subscribe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -15,7 +16,7 @@ public class ESP extends Module {
 
     }
 
-    @SubscribeEvent
+    @Subscribe
     public void onUpdate(TickEvent.ClientTickEvent e) {
 
         System.out.println("Event Fired");
