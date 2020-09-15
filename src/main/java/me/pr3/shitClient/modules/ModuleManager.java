@@ -25,25 +25,6 @@ public class ModuleManager {
     }
 
 
-    public static void onRender(RenderGameOverlayEvent e) {
-
-        for (Module m : modules) {
-            if (m.getEnabled()) {
-                m.onRender(e);
-            }
-        }
-
-    }
-
-    public static void onUpdate(TickEvent.ClientTickEvent e) {
-
-        for (Module m : modules) {
-            if (m.getEnabled()) {
-                m.onUpdate(e);
-            }
-        }
-
-    }
 
 
 

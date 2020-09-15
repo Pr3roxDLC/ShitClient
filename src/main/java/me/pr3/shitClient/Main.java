@@ -1,6 +1,7 @@
 package me.pr3.shitClient;
 
 
+import com.google.common.eventbus.EventBus;
 import me.pr3.shitClient.modules.ModuleManager;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,8 +20,11 @@ import java.util.List;
 @Mod(modid = "shitclient", name = "ShitClient", version = "1.0.0" )
 public class Main {
 
+	public static final String MOD_ID = "shitclient";
 
 
+
+	public static final EventBus BUS = new EventBus(MOD_ID);
 
 
 
@@ -39,7 +43,6 @@ public class Main {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 
-		MinecraftForge.EVENT_BUS.register(this);
 
 		ModuleManager.initModules();
 
@@ -52,19 +55,7 @@ public class Main {
 		
 	}
 
-	@SubscribeEvent
-	public void onRenderEvent(RenderGameOverlayEvent e){
 
-		ModuleManager.onRender(e);
-
-	}
-
-	@SubscribeEvent
-	public void onUpdate(TickEvent.ClientTickEvent e){
-
-		ModuleManager.onUpdate(e);
-
-	}
 
 
 
