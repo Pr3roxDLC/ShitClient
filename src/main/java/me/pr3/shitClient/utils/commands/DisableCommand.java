@@ -1,8 +1,8 @@
-package me.pr3.shitClient.utils;
+package me.pr3.shitClient.utils.commands;
 
 import me.pr3.shitClient.modules.ModuleManager;
 
-public class DisableCommand extends Command{
+public class DisableCommand extends Command {
 
 
     public DisableCommand(){

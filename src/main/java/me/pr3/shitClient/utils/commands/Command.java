@@ -1,4 +1,4 @@
-package me.pr3.shitClient.utils;
+package me.pr3.shitClient.utils.commands;
 
 public abstract class Command {
 
