@@ -24,6 +24,18 @@ public class ModuleManager {
         return modules;
     }
 
+    public static Module getModuleByName(String str){
+
+        for(Module m : modules){
+
+            if(m.getName().equalsIgnoreCase(str)) return m;
+
+        }
+
+        return null;
+
+    }
+
 
 
 

@@ -4,6 +4,7 @@ package me.pr3.shitClient;
 import com.google.common.eventbus.EventBus;
 import me.pr3.shitClient.events.EventManager;
 import me.pr3.shitClient.modules.ModuleManager;
+import me.pr3.shitClient.utils.CommandHandler;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -46,6 +47,7 @@ public class Main {
 
 
 		MinecraftForge.EVENT_BUS.register(new EventManager());
+		BUS.register(new CommandHandler());
 
 		ModuleManager.initModules();
 

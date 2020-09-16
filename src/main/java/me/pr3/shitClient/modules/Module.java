@@ -32,7 +32,7 @@ public abstract class Module {
 
 
             }else if(!enabled){
-
+                Main.BUS.register(this);
                 Main.BUS.unregister(this);
                 onDisable();
                 System.out.println(this.getName() + " was disabled!");

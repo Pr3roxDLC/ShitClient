@@ -2,6 +2,7 @@ package me.pr3.shitClient.events;
 
 import com.google.common.eventbus.Subscribe;
 import me.pr3.shitClient.Main;
+import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -14,6 +15,15 @@ public class EventManager {
 
 
     }
+
+    @SubscribeEvent
+    public void onChat(ClientChatEvent e){
+
+        Main.BUS.post(e);
+
+    }
+
+
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent e){

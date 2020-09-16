@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class WaterMark extends Module {
 
     public WaterMark(){
-        setName("WaterMark");
+        setName("watermark");
 
         setEnabled(true);
 
