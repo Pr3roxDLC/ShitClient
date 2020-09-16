@@ -1,5 +1,6 @@
 package me.pr3.shitClient.utils.commands;
 
+import me.pr3.shitClient.modules.Module;
 import me.pr3.shitClient.modules.ModuleManager;
 
 public class EnableCommand extends Command {
@@ -14,7 +15,11 @@ public class EnableCommand extends Command {
     @Override
     public void exec( String[] params ) {
 
-        ModuleManager.getModuleByName(params[0]).setEnabled(true);
+
+        Module mod = ModuleManager.getModuleByName(params[0]);
+        if (mod != null) {
+            mod.setEnabled(true);
+        }
 
     }
 }

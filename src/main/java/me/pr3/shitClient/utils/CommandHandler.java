@@ -58,7 +58,6 @@ public class CommandHandler {
 
             for(String str2: subStrings)
 
-            System.out.println(str2);
 
 runCommand(cmd, subStrings);
 

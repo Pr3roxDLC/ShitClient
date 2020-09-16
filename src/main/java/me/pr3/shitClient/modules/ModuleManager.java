@@ -17,6 +17,8 @@ public class ModuleManager {
 
         modules.add(new WaterMark());
         modules.add(new ESP());
+        modules.add(new FullBright());
+        modules.add(new NoRain());
 
     }
 
