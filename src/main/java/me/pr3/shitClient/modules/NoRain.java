@@ -18,6 +18,7 @@ public class NoRain extends Module{
     public void onEnable() {
         super.onEnable();
 
+
         System.out.println("Enabled NoRain");
 
     }
