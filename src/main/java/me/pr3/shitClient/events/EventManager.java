@@ -17,16 +17,14 @@ public class EventManager {
 
     }
 
-    @SubscribeEvent
-    public void onRenderRain(RenderWorldLastEvent e){
-        Main.BUS.post(e);
 
-    }
 
     @SubscribeEvent
     public void onChat(ClientChatEvent e){
 
         Main.BUS.post(e);
+
+        
 
     }
 
