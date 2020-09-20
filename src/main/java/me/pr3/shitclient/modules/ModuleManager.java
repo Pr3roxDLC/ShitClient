@@ -1,5 +1,9 @@
 package me.pr3.shitclient.modules;
 
+import com.google.common.eventbus.Subscribe;
+import me.pr3.shitclient.Main;
+import me.pr3.shitclient.events.KeyPressEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +11,15 @@ public class ModuleManager {
 
     public static List<Module> modules = new ArrayList<Module>();
 
-    public static void initModules() {
+    public ModuleManager(){
+
+        Main.BUS.register(this);
+
+    }
+
+    public void initModules() {
+
+
 
         modules.add(new WaterMark());
         modules.add(new ESP());
@@ -19,7 +31,7 @@ public class ModuleManager {
 
     }
 
-    public static List<Module> getModules() {
+    public List<Module> getModules() {
         return modules;
     }
 
@@ -32,6 +44,24 @@ public class ModuleManager {
         }
 
         return null;
+
+    }
+
+    @Subscribe
+    public void onKeyPressEvent(KeyPressEvent e){
+
+        for(Module m: modules){
+
+            if(m.getKeyID() == e.getKeyID()){
+
+
+
+
+                m.setEnabled(!m.getEnabled());
+
+            }
+
+        }
 
     }
 

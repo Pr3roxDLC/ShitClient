@@ -5,8 +5,16 @@ import me.pr3.shitclient.Main;
 public abstract class Module {
 
     private boolean enabled = false;
+    private int keyID = 0;
     private String name = "unnamed";
 
+    public int getKeyID() {
+        return keyID;
+    }
+
+    public void setKeyID(int keyID) {
+        this.keyID = keyID;
+    }
 
     public String getName() {
         return name;
@@ -15,6 +23,7 @@ public abstract class Module {
     public void setName(String name) {
         this.name = name;
     }
+
 
 
         public void setEnabled(boolean enabled){

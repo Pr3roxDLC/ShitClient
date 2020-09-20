@@ -13,13 +13,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinMinecraft {
 
     @Inject(method = "dispatchKeypresses", at = @At("HEAD"))
-    public void onDispatchKeypresses(CallbackInfo callbackInfo){
+    public void onDispatchKeypresses(CallbackInfo callbackInfo) {
 
         int i = Keyboard.getEventKey() == 0 ? Keyboard.getEventCharacter() + 256 : Keyboard.getEventKey();
+        if(Keyboard.getEventKeyState()) {
+            KeyPressEvent e = new KeyPressEvent(i);
+            Main.BUS.post(e);
+        }
 
-        KeyPressEvent e = new KeyPressEvent(i);
 
-        Main.BUS.post(e);
 
     }
 

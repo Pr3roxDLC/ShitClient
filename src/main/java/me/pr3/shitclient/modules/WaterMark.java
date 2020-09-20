@@ -4,12 +4,13 @@ import com.google.common.eventbus.Subscribe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import org.lwjgl.input.Keyboard;
 
 public class WaterMark extends Module {
 
     public WaterMark() {
         setName("Watermark");
-
+        setKeyID(Keyboard.KEY_P);
         setEnabled(true);
 
     }

@@ -1,6 +1,7 @@
 package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
+import me.pr3.shitclient.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -23,7 +24,7 @@ public class ModuleArrayList extends Module {
     public void onRender(RenderGameOverlayEvent e) {
         List<String> str =new  ArrayList<String>();
 
-        for (Module m : ModuleManager.getModules()) {
+        for (Module m : Main.mm.getModules()) {
 
             if (m.getEnabled()) {
                 str.add(m.getName());

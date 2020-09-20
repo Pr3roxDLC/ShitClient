@@ -17,9 +17,11 @@ public class Main {
 
 	public static final String MOD_ID = "shitclient";
 
-
-
 	public static final EventBus BUS = new EventBus(MOD_ID);
+
+	public static ModuleManager mm = new ModuleManager();
+
+
 
 
 
@@ -42,7 +44,10 @@ public class Main {
 		MinecraftForge.EVENT_BUS.register(new EventManager());
 		BUS.register(new CommandHandler());
 
-		ModuleManager.initModules();
+		BUS.register(mm);
+
+		mm.initModules();
+
 
 
 
