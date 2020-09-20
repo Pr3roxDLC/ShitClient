@@ -1,10 +1,10 @@
-package me.pr3.shitClient.utils;
+package me.pr3.shitclient.utils;
 
 import com.google.common.eventbus.Subscribe;
-import me.pr3.shitClient.Main;
-import me.pr3.shitClient.utils.commands.Command;
-import me.pr3.shitClient.utils.commands.DisableCommand;
-import me.pr3.shitClient.utils.commands.EnableCommand;
+import me.pr3.shitclient.Main;
+import me.pr3.shitclient.utils.commands.Command;
+import me.pr3.shitclient.utils.commands.DisableCommand;
+import me.pr3.shitclient.utils.commands.EnableCommand;
 import net.minecraftforge.client.event.ClientChatEvent;
 
 import java.util.ArrayList;

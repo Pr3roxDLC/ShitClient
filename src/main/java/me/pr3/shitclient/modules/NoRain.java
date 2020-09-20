@@ -1,15 +1,14 @@
-package me.pr3.shitClient.modules;
+package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.Sys;
 
 public class NoRain extends Module{
 
+
     public NoRain(){
-        setName("norain");
+        setName("NoRain");
         setEnabled(false);
 
     }
@@ -25,10 +24,10 @@ public class NoRain extends Module{
 
     @Subscribe
     public void onTick(TickEvent.ClientTickEvent e){
-
-        if(Minecraft.getMinecraft().world.isRaining()) Minecraft.getMinecraft().world.setRainStrength(0.0f);
-        if(Minecraft.getMinecraft().world.isThundering()) Minecraft.getMinecraft().world.setThunderStrength(0.0f);
-
+if(Minecraft.getMinecraft().world != null) {
+    if (Minecraft.getMinecraft().world.isRaining()) Minecraft.getMinecraft().world.setRainStrength(0.0f);
+    if (Minecraft.getMinecraft().world.isThundering()) Minecraft.getMinecraft().world.setThunderStrength(0.0f);
+}
     }
 
 }

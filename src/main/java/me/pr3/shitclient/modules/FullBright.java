@@ -1,4 +1,4 @@
-package me.pr3.shitClient.modules;
+package me.pr3.shitclient.modules;
 
 import net.minecraft.client.Minecraft;
 
@@ -8,7 +8,7 @@ public class FullBright extends Module {
 
     public FullBright(){
 
-        setName("fullbright");
+        setName("FullBright");
 
 
     }

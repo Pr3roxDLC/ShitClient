@@ -1,4 +1,4 @@
-package me.pr3.shitClient.modules;
+package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.client.Minecraft;
@@ -14,7 +14,7 @@ public class ModuleArrayList extends Module {
     public ModuleArrayList() {
 
         setEnabled(true);
-        setName("modulearraylist");
+        setName("ModuleArrayList");
 
 
     }

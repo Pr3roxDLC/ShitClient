@@ -1,0 +1,23 @@
+package me.pr3.shitclient.mixins;
+
+import net.minecraft.client.gui.GuiMainMenu;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(GuiMainMenu.class)
+public class MixinGuiMainMenu {
+
+    @Inject(method = "<init>", at = @At("RETURN"))
+    public void initMainMenu(CallbackInfo callbackInfo){
+
+        System.out.println("Main Menu Initialized!!");
+
+    }
+
+
+
+
+
+}

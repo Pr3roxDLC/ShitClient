@@ -1,12 +1,6 @@
-package me.pr3.shitClient.modules;
-
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import scala.actors.threadpool.Arrays;
+package me.pr3.shitclient.modules;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ModuleManager {
@@ -20,6 +14,8 @@ public class ModuleManager {
         modules.add(new FullBright());
         modules.add(new NoRain());
         modules.add(new ModuleArrayList());
+        modules.add(new ChatSuffix());
+        modules.add(new NameTags());
 
     }
 

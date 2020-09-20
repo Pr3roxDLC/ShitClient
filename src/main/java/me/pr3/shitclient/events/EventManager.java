@@ -1,11 +1,10 @@
-package me.pr3.shitClient.events;
+package me.pr3.shitclient.events;
 
-import com.google.common.eventbus.Subscribe;
-import me.pr3.shitClient.Main;
+import me.pr3.shitclient.Main;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -24,7 +23,14 @@ public class EventManager {
 
         Main.BUS.post(e);
 
-        
+
+
+    }
+
+    @SubscribeEvent
+    public void onLivingUpdate(LivingEvent e){
+
+        Main.BUS.post(e);
 
     }
 
@@ -39,6 +45,13 @@ public class EventManager {
 
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent e){
+
+        Main.BUS.post(e);
+
+    }
+
+    @SubscribeEvent
+    public void onRender(RenderLivingEvent e){
 
         Main.BUS.post(e);
 

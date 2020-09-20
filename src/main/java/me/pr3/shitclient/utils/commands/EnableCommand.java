@@ -1,7 +1,7 @@
-package me.pr3.shitClient.utils.commands;
+package me.pr3.shitclient.utils.commands;
 
-import me.pr3.shitClient.modules.Module;
-import me.pr3.shitClient.modules.ModuleManager;
+import me.pr3.shitclient.modules.Module;
+import me.pr3.shitclient.modules.ModuleManager;
 
 public class EnableCommand extends Command {
 

@@ -1,9 +1,6 @@
-package me.pr3.shitClient.modules;
+package me.pr3.shitclient.modules;
 
-import me.pr3.shitClient.Main;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
+import me.pr3.shitclient.Main;
 
 public abstract class Module {
 
@@ -26,7 +23,7 @@ public abstract class Module {
 
             if(enabled){
 
-                Main.BUS.register(this);
+                 Main.BUS.register(this);
                 onEnable();
                 System.out.println(this.getName() + " was enabled!");
 
