@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="run dev client" type="Application" factoryName="Application">
+  <configuration default="false" name="run client" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="GradleStart" />
     <module name="ShitClient.main" />
     <option name="VM_PARAMETERS" value="-Dfml.coreMods.load=me.pr3.shitclient.mixins.MixinLoader" />
