@@ -1,7 +1,3 @@
-# project specific
-run/
-logs/
-
 # eclipse
 bin
 *.launch
@@ -25,7 +21,7 @@ classes/
 
 # other
 eclipse
-run
+clientrun
 
 # Files from Forge MDK
 forge*changelog.txt
