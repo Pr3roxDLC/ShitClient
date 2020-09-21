@@ -1,4 +1,5 @@
 # eclipse
+eclipse
 bin
 *.launch
 .settings
@@ -18,10 +19,6 @@ out
 build/
 out/
 classes/
-
-# other
-eclipse
-clientrun
 
 # Files from Forge MDK
 forge*changelog.txt
