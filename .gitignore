@@ -1,8 +1,5 @@
-# project specific
-run/
-logs/
-
 # eclipse
+eclipse
 bin
 *.launch
 .settings
@@ -22,10 +19,6 @@ out
 build/
 out/
 classes/
-
-# other
-eclipse
-run
 
 # Files from Forge MDK
 forge*changelog.txt
