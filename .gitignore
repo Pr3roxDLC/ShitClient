@@ -1,3 +1,7 @@
+# project specific
+run/
+logs/
+
 # eclipse
 bin
 *.launch
@@ -13,9 +17,11 @@ out
 *.iml
 .idea
 
-# gradle
-build
-.gradle
+#gradle
+.gradle/
+build/
+out/
+classes/
 
 # other
 eclipse
@@ -23,3 +29,24 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+
+# windows
+Thumbs.db
+[Dd]esktop.ini
+*.lnk
+
+# linux
+*~
+.Trash-*
+.nfs*
+.fuse_hidden*
+.directory
+
+# mac
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+.AppleDB
+.AppleDesktop
+.apdisk
