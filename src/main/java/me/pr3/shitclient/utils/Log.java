@@ -7,11 +7,14 @@ import org.apache.logging.log4j.Logger;
 
 public class Log {
 
-    private static final Logger logger = LogManager.getLogger();
-    private static final String PREFIX = "[" + Main.MOD_ID.toUpperCase() + "] ";
+    private static Logger logger = LogManager.getLogger();
+
+    public static void setLogger(Logger logger) {
+        Log.logger = logger;
+    }
 
     private static void log(Level level, String message) {
-        logger.log(level, PREFIX + message);
+        logger.log(level, message);
     }
 
     public static void debug(String message) {

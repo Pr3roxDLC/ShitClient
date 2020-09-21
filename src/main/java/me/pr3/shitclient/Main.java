@@ -5,6 +5,7 @@ import com.google.common.eventbus.EventBus;
 import me.pr3.shitclient.events.EventManager;
 import me.pr3.shitclient.modules.ModuleManager;
 import me.pr3.shitclient.utils.CommandHandler;
+import me.pr3.shitclient.utils.Log;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -21,25 +22,15 @@ public class Main {
 
 	public static ModuleManager mm = new ModuleManager();
 
-
-
-
-
-
-
-
-	
 	@EventHandler
 	public  void PreInit(FMLPreInitializationEvent event) {
 
-
+		Log.setLogger(event.getModLog());
 
 	}
 
-
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
 
 		MinecraftForge.EVENT_BUS.register(new EventManager());
 		BUS.register(new CommandHandler());
@@ -48,24 +39,11 @@ public class Main {
 
 		mm.initModules();
 
-
-
-
 	}
-	
+
 	@EventHandler
 	public void PostInit(FMLPostInitializationEvent event) {
-		
+
 	}
-
-
-
-
-
-
-
-
-
-
 
 }
