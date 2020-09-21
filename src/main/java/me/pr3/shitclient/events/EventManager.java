@@ -44,14 +44,14 @@ public class EventManager {
     }
 
     @SubscribeEvent
-    public void onRender(RenderGameOverlayEvent e){
+    public void onRenderGameOverlay(RenderGameOverlayEvent e){
 
         Main.BUS.post(e);
 
     }
 
     @SubscribeEvent
-    public void onRender(RenderLivingEvent e){
+    public void onRenderLiving(RenderLivingEvent.Pre<?> e){
 
         Main.BUS.post(e);
 
