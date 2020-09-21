@@ -16,7 +16,7 @@ public class CommandHandler {
     public static List<Command> commands = new ArrayList<Command>();
 
     public CommandHandler() {
-        System.out.println("Started Command Initialiation");
+        Log.info("Started Command Initialiation");
 
         Main.BUS.register(this);
 

@@ -2,13 +2,14 @@ package me.pr3.shitclient.utils.commands;
 
 import me.pr3.shitclient.modules.Module;
 import me.pr3.shitclient.modules.ModuleManager;
+import me.pr3.shitclient.utils.Log;
 
 public class EnableCommand extends Command {
 
     public EnableCommand(){
 
         setName("enable");
-        System.out.println("Registered enable Command");
+        Log.info("Registered enable Command");
 
     }
 
