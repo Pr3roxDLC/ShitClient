@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run dev client" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="GradleStart" />
+    <module name="ShitClient.main" />
+    <option name="VM_PARAMETERS" value="-Dfml.coreMods.load=me.pr3.shitclient.mixins.MixinLoader" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
