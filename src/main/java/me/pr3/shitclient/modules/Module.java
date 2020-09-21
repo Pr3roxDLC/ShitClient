@@ -1,6 +1,7 @@
 package me.pr3.shitclient.modules;
 
 import me.pr3.shitclient.Main;
+import me.pr3.shitclient.utils.Log;
 
 public abstract class Module {
 
@@ -34,14 +35,14 @@ public abstract class Module {
 
                  Main.BUS.register(this);
                 onEnable();
-                System.out.println(this.getName() + " was enabled!");
+                Log.info(this.getName() + " was enabled!");
 
 
             }else if(!enabled){
                 Main.BUS.register(this);
                 Main.BUS.unregister(this);
                 onDisable();
-                System.out.println(this.getName() + " was disabled!");
+                Log.info(this.getName() + " was disabled!");
 
             }
 

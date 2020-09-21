@@ -1,6 +1,7 @@
 package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
+import me.pr3.shitclient.utils.Log;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -18,7 +19,7 @@ public class NoRain extends Module{
         super.onEnable();
 
 
-        System.out.println("Enabled NoRain");
+        Log.info("Enabled NoRain");
 
     }
 

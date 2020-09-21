@@ -1,5 +1,6 @@
 package me.pr3.shitclient.events;
 
+import me.pr3.shitclient.utils.Log;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 
@@ -15,7 +16,7 @@ public class KeyPressEvent extends Event{
 
         this.keyID = keyID;
 
-        System.out.println("KeyID: " + keyID);
+        Log.info("KeyID: " + keyID);
 
     }
 
