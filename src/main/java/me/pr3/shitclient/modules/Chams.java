@@ -19,13 +19,13 @@ public class Chams extends Module {
         GL11.glEnable(GL11.GL_POLYGON_OFFSET_FILL);
         GlStateManager.enablePolygonOffset();
         GlStateManager.disableLighting();
-        GlStateManager.doPolygonOffset(1.0F, -1000000);
+        GlStateManager.doPolygonOffset(1.0F, -2000000);
     }
 
     @Subscribe
     public void onPostRenderLiving(RenderLivingEvent.Post event) {
         GL11.glDisable(GL11.GL_POLYGON_OFFSET_FILL);
-        GlStateManager.doPolygonOffset(1.0F, 1000000);
+        GlStateManager.doPolygonOffset(1.0F, 2000000);
         GlStateManager.enableLighting();
         GlStateManager.disablePolygonOffset();
     }
