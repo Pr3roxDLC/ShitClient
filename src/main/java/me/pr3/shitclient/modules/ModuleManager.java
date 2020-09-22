@@ -3,6 +3,8 @@ package me.pr3.shitclient.modules;
 import com.google.common.eventbus.Subscribe;
 import me.pr3.shitclient.Main;
 import me.pr3.shitclient.events.KeyPressEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiChat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class ModuleManager {
         modules.add(new ModuleArrayList());
         modules.add(new ChatSuffix());
         modules.add(new NameTags());
+        modules.add(new FastPlace());
 
     }
 
@@ -52,7 +55,7 @@ public class ModuleManager {
 
         for(Module m: modules){
 
-            if(m.getKeyID() == e.getKeyID()){
+            if(m.getKeyID() == e.getKeyID() && !(Minecraft.getMinecraft().currentScreen instanceof GuiChat)){
 
 
 
