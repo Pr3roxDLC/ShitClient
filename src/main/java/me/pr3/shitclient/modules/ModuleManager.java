@@ -31,6 +31,7 @@ public class ModuleManager {
         modules.add(new ChatSuffix());
         modules.add(new NameTags());
         modules.add(new FastPlace());
+        modules.add(new Chams());
 
     }
 
