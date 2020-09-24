@@ -54,7 +54,7 @@ public class ModuleArrayList extends Module {
             x=sr.getScaledWidth()  - Minecraft.getMinecraft().fontRenderer.getStringWidth(modulestr);
 
             Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(modulestr, x -5  , y, -1);
-            Log.info("Drew a String at: x = " + x + " y = " + y);
+
             y += 12;
         }
         //Rebind ICONS texture to not fuck up the Hot Bar
