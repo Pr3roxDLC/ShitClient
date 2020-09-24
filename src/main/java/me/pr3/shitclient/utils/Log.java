@@ -7,13 +7,9 @@ import org.apache.logging.log4j.Logger;
 
 public class Log {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(Main.MOD_ID);
 
-    public static void setLogger(Logger logger) {
-        Log.logger = logger;
-    }
-
-    private static void log(Level level, String message) {
+    public static void log(Level level, String message) {
         logger.log(level, message);
     }
 

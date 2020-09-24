@@ -1,27 +1,36 @@
-package me.pr3.shitclient.modules;
+package me.pr3.shitclient.plumbing;
 
 import com.google.common.eventbus.Subscribe;
 import me.pr3.shitclient.Main;
 import me.pr3.shitclient.events.KeyPressEvent;
+import me.pr3.shitclient.modules.*;
+import me.pr3.shitclient.utils.Log;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnstableApiUsage")
 public class ModuleManager {
 
-    public static List<Module> modules = new ArrayList<Module>();
+    public static final Minecraft MC = Minecraft.getMinecraft();
+    public static List<Module> modules = new ArrayList<>();
 
-    public ModuleManager(){
-
+    public ModuleManager() {
         Main.BUS.register(this);
+    }
+
+    public static Module getModuleByName(String str) {
+
+        for (Module m : modules) {
+            if (m.getName().equalsIgnoreCase(str)) return m;
+        }
+        return null;
 
     }
 
     public void initModules() {
-
-
 
         modules.add(new WaterMark());
         modules.add(new ESP());
@@ -33,45 +42,23 @@ public class ModuleManager {
         modules.add(new FastPlace());
         modules.add(new Chams());
 
+        modules.forEach(command -> Log.info("Registered Module: " + command.getName()));
+
     }
 
     public List<Module> getModules() {
         return modules;
     }
 
-    public static Module getModuleByName(String str){
-
-        for(Module m : modules){
-
-            if(m.getName().equalsIgnoreCase(str)) return m;
-
-        }
-
-        return null;
-
-    }
-
     @Subscribe
-    public void onKeyPressEvent(KeyPressEvent e){
+    public void onKeyPressEvent(KeyPressEvent e) {
 
-        for(Module m: modules){
-
-            if(m.getKeyID() == e.getKeyID() && !(Minecraft.getMinecraft().currentScreen instanceof GuiChat)){
-
-
-
-
+        for (Module m : modules) {
+            if (m.getKeyID() == e.getKeyID() && !(MC.currentScreen instanceof GuiChat)) {
                 m.setEnabled(!m.getEnabled());
-
             }
-
         }
 
     }
-
-
-
-
-
 
 }
