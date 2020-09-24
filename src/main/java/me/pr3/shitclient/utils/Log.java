@@ -9,12 +9,11 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.text.MessageFormat;
-
 public class Log {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
     private static final Logger logger = LogManager.getLogger(Main.MOD_ID);
+    private static final String deco = "" + ChatFormatting.BOLD + ChatFormatting.DARK_RED + "SHIT -> " + ChatFormatting.RESET;
 
     public static void debug(String message) {
         debug(message, false);
@@ -66,7 +65,7 @@ public class Log {
 
     private static void sendLocalChat(String message) {
         if (mc.player != null && mc.world != null) {
-            mc.ingameGUI.addChatMessage(ChatType.CHAT, new TextComponentString(MessageFormat.format("{0}{1}{2} {3}{4} {5}", ChatFormatting.BOLD, ChatFormatting.DARK_RED, "SHIT", "->", ChatFormatting.RESET, message)));
+            mc.ingameGUI.addChatMessage(ChatType.CHAT, new TextComponentString(deco + message));
         }
     }
 
