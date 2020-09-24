@@ -41,6 +41,7 @@ public class ModuleManager {
         modules.add(new NameTags());
         modules.add(new FastPlace());
         modules.add(new Chams());
+        modules.add(new PacketLoggerMod());
 
         modules.forEach(command -> Log.info("Registered Module: " + command.getName()));
 

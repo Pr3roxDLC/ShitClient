@@ -1,11 +1,12 @@
 {
   "package": "me.pr3.shitclient.mixins",
-  "required" : true,
+  "required": true,
   "refmap": "mixins.shitclient.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinGuiMainMenu",
-    "MixinMinecraft"
+    "MixinMinecraft",
+    "MixinNetworkManager"
   ],
   "minVersion": "0.6"
 }
