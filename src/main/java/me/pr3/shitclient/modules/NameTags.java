@@ -8,8 +8,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 public class NameTags extends Module {
 
     public NameTags() {
-        setName("NameTags");
-        setEnabled(true);
+        super("NameTags", false);
     }
 
     @Subscribe

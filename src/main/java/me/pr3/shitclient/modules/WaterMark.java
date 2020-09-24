@@ -10,9 +10,7 @@ import org.lwjgl.input.Keyboard;
 public class WaterMark extends Module {
 
     public WaterMark() {
-        setName("Watermark");
-        setKeyID(Keyboard.KEY_P);
-        setEnabled(true);
+        super("Watermark", true, Keyboard.KEY_P);
     }
 
     //WICHTIG: HIER @Subscribe BENUTZEN NICHT @SubscribeEvent !!!

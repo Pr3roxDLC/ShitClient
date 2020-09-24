@@ -8,8 +8,7 @@ public class NoRain extends Module {
 
 
     public NoRain() {
-        setName("NoRain");
-        setEnabled(false);
+        super("NoRain", false);
     }
 
     @Subscribe

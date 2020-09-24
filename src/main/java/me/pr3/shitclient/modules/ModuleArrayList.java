@@ -13,8 +13,7 @@ import java.util.List;
 public class ModuleArrayList extends Module {
 
     public ModuleArrayList() {
-        setEnabled(true);
-        setName("ModuleArrayList");
+        super("ModuleArrayList", true);
     }
 
     @Subscribe
@@ -25,7 +24,7 @@ public class ModuleArrayList extends Module {
         List<String> activeModules = new ArrayList<>();
 
         for (Module m : Main.mm.getModules()) {
-            if (m.getEnabled()) {
+            if (m.isEnabled()) {
                 activeModules.add(m.getName());
             }
         }

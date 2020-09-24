@@ -5,7 +5,7 @@ public class FullBright extends Module {
     private float gamma = 0;
 
     public FullBright() {
-        setName("FullBright");
+        super("FullBright");
     }
 
     @Override

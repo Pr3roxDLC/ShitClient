@@ -16,7 +16,7 @@ public class ToggleCommand extends Command {
 
         Module mod = ModuleManager.getModuleByName(params.get(0));
         if (mod != null) {
-            mod.setEnabled(!mod.getEnabled());
+            mod.setEnabled(!mod.isEnabled());
         }
 
     }

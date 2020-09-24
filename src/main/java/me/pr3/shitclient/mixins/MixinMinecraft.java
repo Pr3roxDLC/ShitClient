@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("UnstableApiUsage")
 @Mixin(Minecraft.class)
 public class MixinMinecraft {
 
@@ -20,8 +21,6 @@ public class MixinMinecraft {
             KeyPressEvent e = new KeyPressEvent(i);
             Main.BUS.post(e);
         }
-
-
 
     }
 

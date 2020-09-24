@@ -14,7 +14,7 @@ import java.util.List;
 @SuppressWarnings("UnstableApiUsage")
 public class ModuleManager {
 
-    public static final Minecraft MC = Minecraft.getMinecraft();
+    public static final Minecraft mc = Minecraft.getMinecraft();
     public static List<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
@@ -22,12 +22,10 @@ public class ModuleManager {
     }
 
     public static Module getModuleByName(String str) {
-
-        for (Module m : modules) {
-            if (m.getName().equalsIgnoreCase(str)) return m;
+        for (Module mod : modules) {
+            if (mod.getName().equalsIgnoreCase(str)) return mod;
         }
         return null;
-
     }
 
     public void initModules() {
@@ -53,9 +51,11 @@ public class ModuleManager {
     @Subscribe
     public void onKeyPressEvent(KeyPressEvent e) {
 
-        for (Module m : modules) {
-            if (m.getKeyID() == e.getKeyID() && !(MC.currentScreen instanceof GuiChat)) {
-                m.setEnabled(!m.getEnabled());
+        Log.debug("KeyId: " + e.getKeyId());
+
+        for (Module mod : modules) {
+            if (mod.getKeyID() == e.getKeyId() && !(mc.currentScreen instanceof GuiChat)) {
+                mod.setEnabled(!mod.isEnabled());
             }
         }
 

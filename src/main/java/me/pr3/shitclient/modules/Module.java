@@ -9,24 +9,36 @@ public abstract class Module {
 
     protected static final Minecraft mc = Minecraft.getMinecraft();
 
-    private boolean enabled = false;
-    private int keyID = 0;
-    private String name = "unnamed";
+    private final String name;
 
-    public int getKeyID() {
-        return keyID;
+    private boolean enabled;
+    private int keyID;
+
+    public Module(String name) {
+        this(name, false, Integer.MIN_VALUE);
     }
 
-    public void setKeyID(int keyID) {
-        this.keyID = keyID;
+    public Module(String name, boolean enabled) {
+        this(name, enabled, Integer.MIN_VALUE);
     }
 
-    public String getName() {
-        return name;
+    public Module(String name, int keyID) {
+        this(name, false, keyID);
     }
 
-    public void setName(String name) {
+    public Module(String name, boolean enabled, int keyID) {
         this.name = name;
+        this.enabled = enabled;
+        this.keyID = keyID;
+        if (enabled) {
+            enable();
+        } else {
+            disable();
+        }
+    }
+
+    protected boolean isInGame() {
+        return mc.player != null && mc.world != null;
     }
 
     /**
@@ -41,11 +53,19 @@ public abstract class Module {
     protected void onDisable() {
     }
 
-    protected boolean isInGame() {
-        return mc.player != null && mc.world != null;
+    public String getName() {
+        return name;
     }
 
-    public boolean getEnabled() {
+    public int getKeyID() {
+        return keyID;
+    }
+
+    public void setKeyID(int keyID) {
+        this.keyID = keyID;
+    }
+
+    public boolean isEnabled() {
         return enabled;
     }
 
@@ -57,14 +77,25 @@ public abstract class Module {
         // Log.info((state ? ChatFormatting.GREEN : ChatFormatting.RED) + name + ChatFormatting.RESET, true);
         this.enabled = state;
         if (state) {
-            Main.BUS.register(this);
-            onEnable();
-            Log.info("Module " + this.getName() + " was enabled!");
+            enable();
         } else {
-            Main.BUS.unregister(this);
-            onDisable();
-            Log.info("Module " + this.getName() + " was disabled!");
+            disable();
         }
+    }
+
+    private void enable() {
+        onEnable();
+        Main.BUS.register(this);
+        Log.info("Module " + this.getName() + " was enabled!");
+    }
+
+    private void disable() {
+        try {
+            Main.BUS.unregister(this);
+        } catch (IllegalArgumentException ignored) {
+        }
+        onDisable();
+        Log.info("Module " + this.getName() + " was disabled!");
     }
 
 }

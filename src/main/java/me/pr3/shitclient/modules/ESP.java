@@ -8,8 +8,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class ESP extends Module {
 
     public ESP() {
-        setName("ESP");
-        setEnabled(false);
+        super("ESP", true);
     }
 
     @Override

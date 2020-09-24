@@ -10,8 +10,7 @@ import org.lwjgl.opengl.GL11;
 public class Chams extends Module {
 
     public Chams() {
-        setEnabled(true);
-        setName("Chams");
+        super("Chams", true);
     }
 
     @Subscribe
