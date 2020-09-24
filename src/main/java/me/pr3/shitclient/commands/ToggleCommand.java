@@ -1,7 +1,7 @@
 package me.pr3.shitclient.commands;
 
 import me.pr3.shitclient.modules.Module;
-import me.pr3.shitclient.modules.ModuleManager;
+import me.pr3.shitclient.plumbing.ModuleManager;
 
 import java.util.List;
 
