@@ -4,23 +4,22 @@ import me.pr3.shitclient.modules.Module;
 import me.pr3.shitclient.modules.ModuleManager;
 import me.pr3.shitclient.utils.Log;
 
+import java.util.List;
+
 public class EnableCommand extends Command {
 
     public EnableCommand(){
-
         setName("enable");
-        Log.info("Registered enable Command");
-
     }
 
     @Override
-    public void exec( String[] params ) {
+    public void exec(List<String> params ) {
 
-
-        Module mod = ModuleManager.getModuleByName(params[0]);
+        Module mod = ModuleManager.getModuleByName(params.get(0));
         if (mod != null) {
             mod.setEnabled(true);
         }
 
     }
+
 }

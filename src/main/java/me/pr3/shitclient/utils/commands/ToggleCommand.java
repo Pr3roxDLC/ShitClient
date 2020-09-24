@@ -6,10 +6,10 @@ import me.pr3.shitclient.utils.Log;
 
 import java.util.List;
 
-public class DisableCommand extends Command {
+public class ToggleCommand extends Command {
 
-    public DisableCommand() {
-        setName("disable");
+    public ToggleCommand() {
+        setName("toggle");
     }
 
     @Override
@@ -17,7 +17,7 @@ public class DisableCommand extends Command {
 
         Module mod = ModuleManager.getModuleByName(params.get(0));
         if (mod != null) {
-            mod.setEnabled(false);
+            mod.setEnabled(!mod.getEnabled());
         }
 
     }
