@@ -2,8 +2,11 @@ package me.pr3.shitclient.modules;
 
 import me.pr3.shitclient.Main;
 import me.pr3.shitclient.utils.Log;
+import net.minecraft.client.Minecraft;
 
 public abstract class Module {
+
+    protected static final Minecraft mc = Minecraft.getMinecraft();
 
     private boolean enabled = false;
     private int keyID = 0;

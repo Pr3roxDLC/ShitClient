@@ -1,7 +1,6 @@
 package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -18,8 +17,8 @@ public class ESP extends Module {
     @Override
     public void onDisable() {
         super.onDisable();
-        if (Minecraft.getMinecraft().world != null) {
-            for (Entity ent : Minecraft.getMinecraft().world.loadedEntityList) {
+        if (mc.world != null) {
+            for (Entity ent : mc.world.loadedEntityList) {
 
                 ent.setGlowing(false);
 
@@ -30,8 +29,8 @@ public class ESP extends Module {
 
     @Subscribe
     public void onUpdate(TickEvent.ClientTickEvent e) {
-        if (Minecraft.getMinecraft().world != null) {
-            for (Entity ent : Minecraft.getMinecraft().world.loadedEntityList) {
+        if (mc.world != null) {
+            for (Entity ent : mc.world.loadedEntityList) {
 
                 ent.setGlowing(true);
 
