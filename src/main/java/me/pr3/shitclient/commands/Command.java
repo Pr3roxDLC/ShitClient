@@ -1,4 +1,4 @@
-package me.pr3.shitclient.utils.commands;
+package me.pr3.shitclient.commands;
 
 import java.util.List;
 

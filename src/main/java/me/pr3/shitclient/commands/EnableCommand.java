@@ -1,15 +1,14 @@
-package me.pr3.shitclient.utils.commands;
+package me.pr3.shitclient.commands;
 
 import me.pr3.shitclient.modules.Module;
 import me.pr3.shitclient.modules.ModuleManager;
-import me.pr3.shitclient.utils.Log;
 
 import java.util.List;
 
-public class DisableCommand extends Command {
+public class EnableCommand extends Command {
 
-    public DisableCommand() {
-        setName("disable");
+    public EnableCommand() {
+        setName("enable");
     }
 
     @Override
@@ -17,7 +16,7 @@ public class DisableCommand extends Command {
 
         Module mod = ModuleManager.getModuleByName(params.get(0));
         if (mod != null) {
-            mod.setEnabled(false);
+            mod.setEnabled(true);
         }
 
     }
