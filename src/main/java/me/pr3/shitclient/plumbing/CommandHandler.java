@@ -2,10 +2,7 @@ package me.pr3.shitclient.plumbing;
 
 import com.google.common.eventbus.Subscribe;
 import me.pr3.shitclient.Main;
-import me.pr3.shitclient.commands.Command;
-import me.pr3.shitclient.commands.DisableCommand;
-import me.pr3.shitclient.commands.EnableCommand;
-import me.pr3.shitclient.commands.ToggleCommand;
+import me.pr3.shitclient.commands.*;
 import me.pr3.shitclient.utils.Log;
 import net.minecraftforge.client.event.ClientChatEvent;
 
@@ -17,7 +14,7 @@ import java.util.List;
 public class CommandHandler {
 
     public static final char COMMAND_PREFIX = '+';
-    public static List<Command> commands = new ArrayList<>();
+    private static final List<Command> commands = new ArrayList<>();
 
     public CommandHandler() {
 
@@ -28,9 +25,14 @@ public class CommandHandler {
         commands.add(new EnableCommand());
         commands.add(new DisableCommand());
         commands.add(new ToggleCommand());
+        commands.add(new ListCommand());
 
         commands.forEach(command -> Log.info("Registered Command: " + command.getName()));
 
+    }
+
+    public static List<Command> getCommands() {
+        return commands;
     }
 
     public void runCommand(String commandStr, List<String> params) {
