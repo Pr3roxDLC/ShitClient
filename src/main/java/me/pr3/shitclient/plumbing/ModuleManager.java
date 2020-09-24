@@ -17,6 +17,7 @@ public class ModuleManager {
     public static final Minecraft mc = Minecraft.getMinecraft();
     public static List<Module> modules = new ArrayList<>();
 
+
     public ModuleManager() {
         Main.BUS.register(this);
     }
@@ -44,7 +45,7 @@ public class ModuleManager {
 
     }
 
-    public List<Module> getModules() {
+    public static List<Module> getModules() {
         return modules;
     }
 
