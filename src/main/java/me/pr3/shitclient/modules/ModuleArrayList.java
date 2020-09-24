@@ -9,22 +9,12 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnstableApiUsage")
 public class ModuleArrayList extends Module {
 
-
-
-
-
-
-
     public ModuleArrayList() {
-
         setEnabled(true);
         setName("ModuleArrayList");
-
-
-
-
     }
 
     @Subscribe
@@ -32,32 +22,24 @@ public class ModuleArrayList extends Module {
 
         ScaledResolution sr = new ScaledResolution(mc);
 
-
-        List<String> str =new  ArrayList<String>();
+        List<String> activeModules = new ArrayList<>();
 
         for (Module m : Main.mm.getModules()) {
-
             if (m.getEnabled()) {
-                str.add(m.getName());
-
+                activeModules.add(m.getName());
             }
-
         }
+
         int y = 5;
-        for(String modulestr : str) {
-            int x = 0;
-
-            x=sr.getScaledWidth()  - mc.fontRenderer.getStringWidth(modulestr);
-
-            mc.fontRenderer.drawStringWithShadow(modulestr, x -5  , y, -1);
-
+        for (String name : activeModules) {
+            int x = sr.getScaledWidth() - mc.fontRenderer.getStringWidth(name);
+            mc.fontRenderer.drawStringWithShadow(name, x - 5, y, -1);
             y += 12;
         }
+
         //Rebind ICONS texture to not fuck up the Hot Bar
         mc.getTextureManager().bindTexture(Gui.ICONS);
 
-
     }
-
 
 }

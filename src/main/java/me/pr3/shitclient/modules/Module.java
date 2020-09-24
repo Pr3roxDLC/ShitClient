@@ -4,6 +4,7 @@ import me.pr3.shitclient.Main;
 import me.pr3.shitclient.utils.Log;
 import net.minecraft.client.Minecraft;
 
+@SuppressWarnings("UnstableApiUsage")
 public abstract class Module {
 
     protected static final Minecraft mc = Minecraft.getMinecraft();
@@ -28,47 +29,42 @@ public abstract class Module {
         this.name = name;
     }
 
-
-
-        public void setEnabled(boolean enabled){
-
-            this.enabled = enabled;
-
-            if(enabled){
-
-                 Main.BUS.register(this);
-                onEnable();
-                Log.info(this.getName() + " was enabled!");
-
-
-            }else if(!enabled){
-                Main.BUS.register(this);
-                Main.BUS.unregister(this);
-                onDisable();
-                Log.info(this.getName() + " was disabled!");
-
-            }
-
-
-
-
+    /**
+     * Overwrite this to execute logic on enable!
+     */
+    protected void onEnable() {
     }
 
-    public void onEnable(){
-
-
+    /**
+     * Overwrite this to execute logic on disable!
+     */
+    protected void onDisable() {
     }
 
-    public void onDisable(){
-
-
-
+    protected boolean isInGame() {
+        return mc.player != null && mc.world != null;
     }
 
-    public boolean getEnabled(){
-
+    public boolean getEnabled() {
         return enabled;
+    }
 
+    public void setEnabled(boolean state) {
+        if (this.enabled == state) {
+            return;
+        }
+        // uncomment if local chat is implemented:
+        // Log.info((state ? ChatFormatting.GREEN : ChatFormatting.RED) + name + ChatFormatting.RESET, true);
+        this.enabled = state;
+        if (state) {
+            Main.BUS.register(this);
+            onEnable();
+            Log.info("Module " + this.getName() + " was enabled!");
+        } else {
+            Main.BUS.unregister(this);
+            onDisable();
+            Log.info("Module " + this.getName() + " was disabled!");
+        }
     }
 
 }
