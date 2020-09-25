@@ -86,7 +86,12 @@ public class PacketLoggerMod extends Module {
 
         @Override
         public String toString() {
-            return timestamp + " | " + direction + " | " + type + " | " + fields.toString();
+            StringBuilder sb = new StringBuilder();
+            sb.append(timestamp).append("|");
+            sb.append(direction).append("|");
+            sb.append(type).append("|");
+            fields.forEach((k, v) -> sb.append(k).append(" ").append(v[0]).append(" ").append(v[1]).append(", "));
+            return sb.toString();
         }
 
         public enum Direction {
