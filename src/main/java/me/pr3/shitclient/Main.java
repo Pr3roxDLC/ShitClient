@@ -13,12 +13,17 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @Mod(modid = "shitclient", name = "shitclient", version = "1.0.0")
 public class Main {
 
     public static final String MOD_ID = "shitclient";
 
     public static final EventBus BUS = new EventBus(MOD_ID);
+
+    public static final Path clientDir = Paths.get(MOD_ID);
 
     public static ModuleManager mm = new ModuleManager();
 

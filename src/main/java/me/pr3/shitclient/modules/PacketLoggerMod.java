@@ -1,9 +1,7 @@
 package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import me.pr3.shitclient.Main;
 import me.pr3.shitclient.events.PacketEvent;
 import me.pr3.shitclient.utils.Log;
 import me.pr3.shitclient.utils.Reflections;
@@ -12,6 +10,8 @@ import net.minecraft.network.Packet;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,10 +19,6 @@ import java.util.HashMap;
 
 @SuppressWarnings("UnstableApiUsage")
 public class PacketLoggerMod extends Module {
-
-    private static final Format format = Format.JSON;
-
-    private static final Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().create();
 
     private File logFile;
 
@@ -33,7 +29,10 @@ public class PacketLoggerMod extends Module {
 
     @Override
     public void onEnable() {
-        logFile = new File(new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS'.log'").format(new Date()));
+        Path loggerDir = Paths.get(Main.clientDir + File.separator + "packetlogger");
+        //noinspection ResultOfMethodCallIgnored
+        loggerDir.toFile().mkdirs();
+        logFile = loggerDir.resolve(new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS'.log'").format(new Date())).toFile();
         try {
             //noinspection ResultOfMethodCallIgnored
             logFile.createNewFile();
@@ -57,13 +56,9 @@ public class PacketLoggerMod extends Module {
     private void logPacket(long timestamp, PacketData.Direction direction, Packet<?> packet) {
         PacketData data = new PacketData(timestamp, direction,
                 packet.getClass().getTypeName(),
-                Reflections.dumpFields(packet));
+                Reflections.dumpPacket(packet));
         String dump;
-        if (format.equals(Format.JSON)) {
-            dump = gson.toJson(data);
-        } else {
-            dump = data.toString();
-        }
+        dump = data.toString() + System.lineSeparator();
         Log.info(dump);
         try {
             Files.write(logFile.toPath(), dump.getBytes(), StandardOpenOption.APPEND);
@@ -72,10 +67,6 @@ public class PacketLoggerMod extends Module {
             e.printStackTrace();
             setEnabled(false);
         }
-    }
-
-    public enum Format {
-        TXT, JSON
     }
 
     @SuppressWarnings("FieldCanBeLocal")
