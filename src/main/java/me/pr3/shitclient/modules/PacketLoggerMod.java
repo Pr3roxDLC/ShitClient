@@ -57,11 +57,8 @@ public class PacketLoggerMod extends Module {
         PacketData data = new PacketData(timestamp, direction,
                 packet.getClass().getTypeName(),
                 Reflections.dumpPacket(packet));
-        String dump;
-        dump = data.toString() + System.lineSeparator();
-        Log.info(dump);
         try {
-            Files.write(logFile.toPath(), dump.getBytes(), StandardOpenOption.APPEND);
+            Files.write(logFile.toPath(), (data.toString() + System.lineSeparator()).getBytes(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             Log.error("Error while writing file: " + logFile.getAbsolutePath());
             e.printStackTrace();
@@ -89,8 +86,8 @@ public class PacketLoggerMod extends Module {
             StringBuilder sb = new StringBuilder();
             sb.append(timestamp).append("|");
             sb.append(direction).append("|");
-            sb.append(type).append("|");
-            fields.forEach((k, v) -> sb.append(k).append(" ").append(v[0]).append(" ").append(v[1]).append(", "));
+            sb.append(type);
+            fields.forEach((k, v) -> sb.append("|").append(k).append(" ").append(v[0]).append(" ").append(v[1]));
             return sb.toString();
         }
 
