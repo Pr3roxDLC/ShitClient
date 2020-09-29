@@ -13,10 +13,15 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "shitclient", name = "shitclient", version = "1.0.0")
+import static me.pr3.shitclient.Main.MOD_ID;
+import static me.pr3.shitclient.Main.MOD_VER;
+
+@SuppressWarnings("UnstableApiUsage")
+@Mod(modid = MOD_ID, name = MOD_ID, version = MOD_VER)
 public class Main {
 
     public static final String MOD_ID = "shitclient";
+    public static final String MOD_VER = "1.0.0";
 
     public static final EventBus BUS = new EventBus(MOD_ID);
 
