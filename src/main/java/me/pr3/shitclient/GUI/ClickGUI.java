@@ -8,6 +8,8 @@ import me.pr3.shitclient.utils.Log;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import scala.collection.parallel.ParIterableLike;
 
 import java.awt.*;
@@ -25,17 +27,20 @@ public class ClickGUI extends GuiScreen {
         int i = 20;
 
         for (Module m : ModuleManager.getModules()) {
-            guiElementList.add(new RectWithText(i, 40, 60, 20, Color.GREEN, Color.gray, m.getName()));
-            i += 70;
+            if (m.isEnabled())
+                guiElementList.add(new RectWithText(20, i, Minecraft.getMinecraft().fontRenderer.getStringWidth(m.getName().toString()), 10, Color.GREEN, Color.LIGHT_GRAY, m.getName()));
+            if (!m.isEnabled())
+                guiElementList.add(new RectWithText(20, i, Minecraft.getMinecraft().fontRenderer.getStringWidth(m.getName().toString()), 10, Color.GREEN, Color.DARK_GRAY, m.getName()));
+
+            i += 12;
         }
 
     }
 
 
-    @Subscribe
-    public void onRenderGameOverlay(RenderGameOverlayEvent e) {
+    public static void render() {
+
         if (Minecraft.getMinecraft().world == null) return;
-        if (e.getType() != RenderGameOverlayEvent.ElementType.TEXT) return;
 
 
         if (Minecraft.getMinecraft().currentScreen instanceof ClickGUI) {
@@ -66,4 +71,12 @@ public class ClickGUI extends GuiScreen {
         }
     }
 
+
+    @Subscribe
+    public void onRenderGameOverlay(RenderGameOverlayEvent e) {
+
+        if (e.getType() != RenderGameOverlayEvent.ElementType.TEXT) return;
+        render();
+
+    }
 }
