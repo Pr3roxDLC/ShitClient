@@ -19,7 +19,7 @@ public class ListCommand extends Command {
         if (params.get(0).toLowerCase().startsWith("com")) {
             CommandHandler.getCommands().forEach(com -> message.append(com.getName()).append(" "));
         } else if (params.get(0).toLowerCase().startsWith("mod")) {
-            ModuleManager.getModules().forEach(mod -> message.append(mod.getEnabled() ? ChatFormatting.GREEN + mod.getName() + ChatFormatting.RESET : mod.getName()).append(" "));
+            ModuleManager.getModules().forEach(mod -> message.append(mod.isEnabled() ? ChatFormatting.GREEN + mod.getName() + ChatFormatting.RESET : mod.getName()).append(" "));
         } else {
             return;
         }

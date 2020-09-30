@@ -2,6 +2,7 @@ package me.pr3.shitclient;
 
 
 import com.google.common.eventbus.EventBus;
+import me.pr3.shitclient.GUI.GuiManager;
 import me.pr3.shitclient.plumbing.CommandHandler;
 import me.pr3.shitclient.plumbing.EventManager;
 import me.pr3.shitclient.plumbing.ModuleManager;
@@ -26,6 +27,9 @@ public class Main {
     public static final EventBus BUS = new EventBus(MOD_ID);
 
     public static ModuleManager mm = new ModuleManager();
+    public static GuiManager gm = new GuiManager();
+
+
 
     @EventHandler
     public void PreInit(FMLPreInitializationEvent event) {
@@ -41,6 +45,7 @@ public class Main {
         BUS.register(mm);
 
         mm.initModules();
+
 
     }
 
