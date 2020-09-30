@@ -44,22 +44,29 @@ public class GuiManager {
 
         for (GUIElement element : ClickGUI.guiElementList) {
 
-            Log.info(Integer.toString(i));
+
 
 
             if (e.getX() > ((RectWithText) element).getX() && e.getX() < ((RectWithText) element).getX() + ((RectWithText) element).getW()) {
 
                 if (e.getY() > ((RectWithText) element).getY() && e.getY() < ((RectWithText) element).getY() + ((RectWithText) element).getH()) {
 
-                    Log.info("Click on a Button : " + ((RectWithText) element).getStr());
+                    
 
                     ModuleManager.modules.get(i).setEnabled(!ModuleManager.modules.get(i).isEnabled());
-                    if (ModuleManager.modules.get(i).isEnabled()) {
-                        ((RectWithText) ClickGUI.guiElementList.get(i)).setC2(Color.LIGHT_GRAY);
-                    } else {
 
-                        ((RectWithText) ClickGUI.guiElementList.get(i)).setC2(Color.DARK_GRAY);
+
+                    int j = 20;
+
+                    for (Module m : ModuleManager.getModules()) {
+                        if (m.isEnabled())
+                            ClickGUI.guiElementList.add(new RectWithText(20, j, Minecraft.getMinecraft().fontRenderer.getStringWidth(m.getName().toString()), 10, Color.GREEN, Color.LIGHT_GRAY, m.getName()));
+                        if (!m.isEnabled())
+                            ClickGUI.guiElementList.add(new RectWithText(20, j, Minecraft.getMinecraft().fontRenderer.getStringWidth(m.getName().toString()), 10, Color.GREEN, Color.DARK_GRAY, m.getName()));
+
+                        j += 12;
                     }
+
 
                     break;
 

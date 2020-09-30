@@ -76,6 +76,7 @@ public class ClickGUI extends GuiScreen {
     public void onRenderGameOverlay(RenderGameOverlayEvent e) {
 
         if (e.getType() != RenderGameOverlayEvent.ElementType.TEXT) return;
+
         render();
 
     }
