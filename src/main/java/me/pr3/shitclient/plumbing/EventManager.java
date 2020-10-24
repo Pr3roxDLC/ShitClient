@@ -4,6 +4,7 @@ import me.pr3.shitclient.Main;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -35,5 +36,8 @@ public class EventManager {
     public void onRenderLiving(RenderLivingEvent.Pre<?> e) {
         Main.BUS.post(e);
     }
+
+    @SubscribeEvent
+    public void onRenderWorldLast(RenderWorldLastEvent e) { Main.BUS.post(e); }
 
 }

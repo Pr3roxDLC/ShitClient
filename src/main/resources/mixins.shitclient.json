@@ -6,7 +6,8 @@
   "mixins": [
     "MixinGuiMainMenu",
     "MixinMinecraft",
-    "MixinGuiScreen"
+    "MixinGuiScreen",
+    "MixinEntityPlayerSP"
   ],
   "minVersion": "0.6"
 }

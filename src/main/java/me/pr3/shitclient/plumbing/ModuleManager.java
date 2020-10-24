@@ -40,6 +40,12 @@ public class ModuleManager {
         modules.add(new NameTags());
         modules.add(new FastPlace());
         modules.add(new Chams());
+        modules.add(new Scaffold());
+        modules.add(new NoJumpDelay());
+        modules.add(new Tracers());
+        modules.add(new BoxESP());
+        modules.add(new BlockOverlay());
+        modules.add(new TestModulePleaseIgnore());
 
         modules.forEach(command -> Log.info("Registered Module: " + command.getName()));
 

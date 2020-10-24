@@ -13,6 +13,7 @@ public class FastPlace extends Module {
     @Subscribe
     public void onClientTick(TickEvent.ClientTickEvent e) {
         mc.rightClickDelayTimer = 0;
+        
     }
 
 }

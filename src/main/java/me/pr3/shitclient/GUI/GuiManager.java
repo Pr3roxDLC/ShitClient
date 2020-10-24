@@ -51,12 +51,14 @@ public class GuiManager {
 
                 if (e.getY() > ((RectWithText) element).getY() && e.getY() < ((RectWithText) element).getY() + ((RectWithText) element).getH()) {
 
-                    
+
 
                     ModuleManager.modules.get(i).setEnabled(!ModuleManager.modules.get(i).isEnabled());
 
 
                     int j = 20;
+
+
 
                     for (Module m : ModuleManager.getModules()) {
                         if (m.isEnabled())
