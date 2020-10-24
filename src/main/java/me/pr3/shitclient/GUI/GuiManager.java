@@ -59,7 +59,7 @@ public class GuiManager {
                     int j = 20;
 
 
-
+                   ClickGUI.guiElementList.clear();
                     for (Module m : ModuleManager.getModules()) {
                         if (m.isEnabled())
                             ClickGUI.guiElementList.add(new RectWithText(20, j, Minecraft.getMinecraft().fontRenderer.getStringWidth(m.getName().toString()), 10, Color.GREEN, Color.LIGHT_GRAY, m.getName()));
