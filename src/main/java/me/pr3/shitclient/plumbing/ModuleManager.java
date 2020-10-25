@@ -45,6 +45,7 @@ public class ModuleManager {
         modules.add(new Tracers());
         modules.add(new BoxESP());
         modules.add(new BlockOverlay());
+        modules.add(new TileEntityESP());
         modules.add(new TestModulePleaseIgnore());
 
         modules.forEach(command -> Log.info("Registered Module: " + command.getName()));
