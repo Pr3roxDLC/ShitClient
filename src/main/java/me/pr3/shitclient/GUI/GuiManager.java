@@ -27,6 +27,7 @@ public class GuiManager {
         if (e.getKeyId() == Keyboard.KEY_Y && Minecraft.getMinecraft().currentScreen == null) {
 
             Minecraft.getMinecraft().displayGuiScreen(new ClickGUI());
+            Minecraft.getMinecraft().gameSettings.showDebugInfo = false;
 
         } else if (e.getKeyId() == Keyboard.KEY_ESCAPE) {
 

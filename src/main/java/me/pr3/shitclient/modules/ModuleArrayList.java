@@ -2,6 +2,7 @@ package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
 import me.pr3.shitclient.Main;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -18,6 +19,8 @@ public class ModuleArrayList extends Module {
 
     @Subscribe
     public void onRender(RenderGameOverlayEvent e) {
+
+        if(Minecraft.getMinecraft().gameSettings.showDebugInfo)return;
 
         ScaledResolution sr = new ScaledResolution(mc);
 
