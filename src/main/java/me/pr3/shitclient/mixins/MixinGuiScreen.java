@@ -15,12 +15,11 @@ import java.io.IOException;
 @Mixin(GuiScreen.class)
 public class MixinGuiScreen {
 
-    @Inject(method = "mouseReleased", at = @At("HEAD"))
-    public void mouseReleased(int mouseX, int mouseY, int state, CallbackInfo callbackInfo) throws IOException{
+    @Inject(method = "mouseClicked", at = @At("HEAD"))
+    public void mouseReleased(int mouseX, int mouseY, int mouseButton, CallbackInfo callbackInfo) throws IOException{
 
         if(Minecraft.getMinecraft().currentScreen instanceof ClickGUI)
-            Main.BUS.post(new GUIClickEvent(mouseX, mouseY, state));
-
+            Main.BUS.post(new GUIClickEvent(mouseX, mouseY, mouseButton));
     }
 
 }

@@ -1,6 +1,7 @@
 package me.pr3.shitclient.modules;
 
 import com.google.common.eventbus.Subscribe;
+import me.pr3.shitclient.GUI.ClickGUI;
 import me.pr3.shitclient.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -21,6 +22,7 @@ public class ModuleArrayList extends Module {
     public void onRender(RenderGameOverlayEvent e) {
 
         if(Minecraft.getMinecraft().gameSettings.showDebugInfo)return;
+        if(mc.currentScreen instanceof ClickGUI) return;
 
         ScaledResolution sr = new ScaledResolution(mc);
 

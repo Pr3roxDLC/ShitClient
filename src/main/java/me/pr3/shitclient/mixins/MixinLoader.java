@@ -9,10 +9,15 @@ import java.util.Map;
 
 public class MixinLoader implements IFMLLoadingPlugin {
 
+    private static boolean isObfuscatedEnvironment = true;
+
     public MixinLoader() {
         MixinBootstrap.init();
         Mixins.addConfiguration("mixins.shitclient.json");
         MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);
+        MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
+        System.out.println(MixinEnvironment.getDefaultEnvironment().getObfuscationContext());
+
     }
 
     @Override
@@ -31,7 +36,9 @@ public class MixinLoader implements IFMLLoadingPlugin {
     }
 
     @Override
-    public void injectData(Map<String, Object> data) { }
+    public void injectData(Map<String, Object> data) {
+        isObfuscatedEnvironment = true;
+    }
 
     @Override
     public String getAccessTransformerClass() {

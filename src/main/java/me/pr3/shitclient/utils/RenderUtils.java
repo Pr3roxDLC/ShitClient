@@ -132,5 +132,34 @@ public class RenderUtils {
         GlStateManager.popMatrix();
     }
 
+    public static void drawLine(float x, float y, float x1, float y1, float thickness, int hex) {
+        float red = (hex >> 16 & 0xFF) / 255.0F;
+        float green = (hex >> 8 & 0xFF) / 255.0F;
+        float blue = (hex & 0xFF) / 255.0F;
+        float alpha = 255;
+
+        GlStateManager.pushMatrix();
+        GlStateManager.disableTexture2D();
+        //GlStateManager.enableBlend();
+        GlStateManager.disableAlpha();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.shadeModel(GL_SMOOTH);
+        glLineWidth(thickness);
+        glEnable(GL_LINE_SMOOTH);
+        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+        final Tessellator tessellator = Tessellator.getInstance();
+        final BufferBuilder bufferbuilder = tessellator.getBuffer();
+        bufferbuilder.begin(GL_LINE_STRIP, DefaultVertexFormats.POSITION_COLOR);
+        bufferbuilder.pos((double) x, (double) y, (double) 0).color(red, green, blue, alpha).endVertex();
+        bufferbuilder.pos((double) x1, (double) y1, (double) 0).color(red, green, blue, alpha).endVertex();
+        tessellator.draw();
+        GlStateManager.shadeModel(GL_FLAT);
+        glDisable(GL_LINE_SMOOTH);
+        //GlStateManager.disableBlend();
+        GlStateManager.enableAlpha();
+        GlStateManager.enableTexture2D();
+        GlStateManager.popMatrix();
+    }
+
 
 }

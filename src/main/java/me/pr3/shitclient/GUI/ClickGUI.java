@@ -4,9 +4,13 @@ import com.google.common.eventbus.Subscribe;
 import me.pr3.shitclient.Main;
 import me.pr3.shitclient.modules.Module;
 import me.pr3.shitclient.plumbing.ModuleManager;
+import me.pr3.shitclient.utils.ColorUtils;
 import me.pr3.shitclient.utils.Log;
+import me.pr3.shitclient.utils.RenderUtils;
+import me.pr3.shitclient.utils.settings.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -39,7 +43,7 @@ public class ClickGUI extends GuiScreen {
     }
 
 
-    public static void render() {
+    public static void renderModules() {
 
         if (Minecraft.getMinecraft().world == null) return;
 
@@ -72,13 +76,43 @@ public class ClickGUI extends GuiScreen {
         }
     }
 
+    public void renderSettingsPanel(GUISettingsPanel guiSettingsPanel){
+
+        ScaledResolution sr = new ScaledResolution(mc);
+
+        if (Minecraft.getMinecraft().world == null) return;
+
+        if (Minecraft.getMinecraft().currentScreen instanceof ClickGUI) {
+            GuiScreen.drawRect(sr.getScaledWidth() - 23, 23, sr.getScaledWidth()  / 2 - 2 , sr.getScaledHeight() - 23, Color.GREEN.getRGB());
+            GuiScreen.drawRect(sr.getScaledWidth() - 25, 25, sr.getScaledWidth()  / 2 , sr.getScaledHeight() - 25, Color.DARK_GRAY.getRGB());
+            RenderUtils.drawLine(GUISettingsPanel.settingsPanelElement.getX() + GUISettingsPanel.settingsPanelElement.getW(),
+                    GUISettingsPanel.settingsPanelElement.getY() + GUISettingsPanel.settingsPanelElement.getH()/2,
+                    sr.getScaledWidth()/2,
+                    sr.getScaledHeight()/2,
+                    1,
+                     ColorUtils.RenderColor);
+
+
+            int y = 37;
+            for(Setting setting : GUISettingsPanel.settings){
+                Log.info("Drew A Setting Named " + setting.name );
+                mc.fontRenderer.drawString(setting.name, sr.getScaledWidth()/ 2 + 12, y, Color.GREEN.getRGB(), false);
+                y += 12;
+            }
+        }
+    }
+
 
     @Subscribe
     public void onRenderGameOverlay(RenderGameOverlayEvent e) {
 
         if (e.getType() != RenderGameOverlayEvent.ElementType.TEXT) return;
+        renderSettingsPanel(null);
+        renderModules();
 
-        render();
+
+
+
 
     }
 }

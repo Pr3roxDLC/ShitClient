@@ -2,12 +2,18 @@ package me.pr3.shitclient.modules;
 
 import me.pr3.shitclient.Main;
 import me.pr3.shitclient.utils.Log;
+import me.pr3.shitclient.utils.settings.Setting;
 import net.minecraft.client.Minecraft;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("UnstableApiUsage")
 public abstract class Module {
 
     protected static final Minecraft mc = Minecraft.getMinecraft();
+
+    protected List<Setting> settings = new ArrayList<Setting>();
 
     private final String name;
 
@@ -52,6 +58,26 @@ public abstract class Module {
      */
     protected void onDisable() {
     }
+
+    protected Setting getSettingByName(String name){
+
+        for(Setting setting : settings){
+
+            if(setting.name.equalsIgnoreCase(name)) return setting;
+
+        }
+        return null;
+    }
+
+    public List<Setting> getSettings(){
+        return settings;
+    }
+
+    public void addSetting(Setting setting){
+        Log.info("Added a new "+ setting.name + " Setting.");
+        settings.add(setting);
+    }
+
 
     public String getName() {
         return name;
