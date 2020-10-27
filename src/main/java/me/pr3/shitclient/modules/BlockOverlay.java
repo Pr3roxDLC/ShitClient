@@ -25,7 +25,7 @@ public class BlockOverlay extends Module{
         BlockPos pos = mc.player.rayTrace(5, e.getPartialTicks()).getBlockPos();
         Block block = BlockUtils.getBlock(pos.getX(), pos.getY(), pos.getZ());
        if(block.isAir(block.getBlockState().getBaseState(),mc.world, pos))return;
-        RenderUtils.drawOutlineBox((float)pos.getX() - (float)mc.getRenderManager().viewerPosX, (float)pos.getY() - (float)mc.getRenderManager().viewerPosY, (float)pos.getZ() - (float)mc.getRenderManager().viewerPosZ, 1, 1 , 1 ,1 , 917248);
+        RenderUtils.drawOutlineBox((float)pos.getX(), (float)pos.getY(), (float)pos.getZ(), 1, 1 , 1 ,1 , 917248);
     }
 
 }

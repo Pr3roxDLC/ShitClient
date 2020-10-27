@@ -24,7 +24,7 @@ public class BoxESP extends Module {
 
         for(Entity entity : mc.world.loadedEntityList) {
             if(!(entity instanceof EntityPlayerSP)) {
-                RenderUtils.drawOutlineBox((float) entity.posX - (float) mc.getRenderManager().viewerPosX - entity.width / 2, (float) entity.posY - (float) mc.getRenderManager().viewerPosY, (float) entity.posZ - (float) mc.getRenderManager().viewerPosZ - entity.width / 2, entity.width, entity.height, entity.width, 1, 917248);
+                RenderUtils.drawOutlineBox((float) entity.posX - entity.width / 2, (float) entity.posY, (float) entity.posZ - entity.width / 2, entity.width, entity.height, entity.width, 1, 917248);
             }
         }
     }

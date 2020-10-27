@@ -18,7 +18,7 @@ public class TileEntityESP extends Module {
 
         for(TileEntity te : mc.world.loadedTileEntityList){
 
-            RenderUtils.drawOutlineBox((float)te.getPos().getX() -(float)mc.getRenderManager().viewerPosX, (float)te.getPos().getY() -(float)mc.getRenderManager().viewerPosY, (float)te.getPos().getZ() -(float)mc.getRenderManager().viewerPosZ, 1, 1, 1,1,917248);
+            RenderUtils.drawOutlineBox((float)te.getPos().getX(), (float)te.getPos().getY(), (float)te.getPos().getZ(), 1, 1, 1,1,917248);
 
         }
 
