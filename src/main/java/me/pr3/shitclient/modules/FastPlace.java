@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class FastPlace extends Module {
 
     public FastPlace() {
-        super("FastPlace", true);
+        super("FastPlace", false);
     }
 
     @Subscribe

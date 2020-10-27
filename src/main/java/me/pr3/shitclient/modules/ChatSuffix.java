@@ -8,7 +8,7 @@ import net.minecraftforge.client.event.ClientChatEvent;
 public class ChatSuffix extends Module {
 
     public ChatSuffix() {
-        super("ChatSuffix", true);
+        super("ChatSuffix", false);
     }
 
     @Subscribe

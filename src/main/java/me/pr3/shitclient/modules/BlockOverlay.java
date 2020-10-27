@@ -4,9 +4,11 @@ package me.pr3.shitclient.modules;
 
 
 import com.google.common.eventbus.Subscribe;
+import me.pr3.shitclient.utils.BlockUtils;
 import me.pr3.shitclient.utils.Log;
 import me.pr3.shitclient.utils.RenderUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 
@@ -21,7 +23,9 @@ public class BlockOverlay extends Module{
     @Subscribe
     public void onRenderWorldLast(RenderWorldLastEvent e){
         BlockPos pos = mc.player.rayTrace(5, e.getPartialTicks()).getBlockPos();
-        RenderUtils.drawOutlineBox((float)pos.getX() - (float)mc.player.posX, (float)pos.getY() - (float)mc.player.posY, (float)pos.getZ() - (float)mc.player.posZ, 1, 1 , 1 ,1 , 917248);
+        Block block = BlockUtils.getBlock(pos.getX(), pos.getY(), pos.getZ());
+       if(block.isAir(block.getBlockState().getBaseState(),mc.world, pos))return;
+        RenderUtils.drawOutlineBox((float)pos.getX() - (float)mc.getRenderManager().viewerPosX, (float)pos.getY() - (float)mc.getRenderManager().viewerPosY, (float)pos.getZ() - (float)mc.getRenderManager().viewerPosZ, 1, 1 , 1 ,1 , 917248);
     }
 
 }
