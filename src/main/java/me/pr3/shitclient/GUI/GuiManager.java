@@ -24,7 +24,7 @@ public class GuiManager {
     @Subscribe
     public void onKey(KeyPressEvent e) {
 
-        if (e.getKeyId() == Keyboard.KEY_Y) {
+        if (e.getKeyId() == Keyboard.KEY_Y && Minecraft.getMinecraft().currentScreen == null) {
 
             Minecraft.getMinecraft().displayGuiScreen(new ClickGUI());
 
