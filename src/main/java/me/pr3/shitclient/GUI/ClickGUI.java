@@ -68,11 +68,7 @@ public class ClickGUI extends GuiScreen {
                             ((RectWithText) element).getX() - Minecraft.getMinecraft().fontRenderer.getStringWidth(((RectWithText) element).getStr()) / 2 + ((RectWithText) element).getW() / 2,
                             ((RectWithText) element).getY() - Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT / 2 + ((RectWithText) element).getH() / 2,
                             Color.black.getRGB());
-
-
                 }
-
-
             }
         }
     }
@@ -93,7 +89,7 @@ public class ClickGUI extends GuiScreen {
                     1,
                     ColorUtils.RenderColor);
 
-            GUISettingsPanel.buttons.clear();
+
             int y = 37;
             for (Setting setting : GUISettingsPanel.settings) {
 

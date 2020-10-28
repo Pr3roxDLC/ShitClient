@@ -9,6 +9,7 @@ public class ESP extends Module {
 
     public ESP() {
         super("ESP", false);
+
     }
 
     @Override

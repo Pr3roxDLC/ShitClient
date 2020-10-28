@@ -68,18 +68,26 @@ public class GuiManager {
                 }
                 i++;
             }
+            GUISettingsPanel.updatePanel();
 
-            for(GUISettingsPanelButton button : GUISettingsPanel.buttons){
+            for (GUISettingsPanelButton button : GUISettingsPanel.buttons) {
 
-                if(e.getY() > button.x && e.getX() < button.x + button.w){
+                Log.info("Checking for Clicks");
+
+                Log.info(button.x + " " + button.y + " to " + (button.x + button.w) + " " + (button.y + button.h));
+                if(e.getX() > button.x && e.getX() < button.x + button.w){
+                    Log.info("Clicked Matched A Buttons X Value");
 
                     if(e.getY() > button.y && e.getY() < button.y + button.h){
+                        Log.info("Click Matched A Buttons Y Value");
 
-                        if(button.getSetting() instanceof BooleanSetting){
+                if (button.getSetting() instanceof BooleanSetting) {
 
-                            ((BooleanSetting)button.getSetting()).setValue(!((BooleanSetting)button.getSetting()).value);
+                    Log.info("Clicked on a Button");
 
-                        }
+                    ((BooleanSetting) button.getSetting()).setValue(!((BooleanSetting) button.getSetting()).value);
+
+                }
 
                     }
 
@@ -89,7 +97,7 @@ public class GuiManager {
 
         }
 
-        if(e.getMouseButton() == 1){
+        if (e.getMouseButton() == 1) {
 
             Log.info("Right Click");
 
@@ -100,7 +108,7 @@ public class GuiManager {
 
                         Log.info("Right Click on a Module");
 
-                        GUISettingsPanel.settingsPanelElement =  (RectWithText) element;
+                        GUISettingsPanel.settingsPanelElement = (RectWithText) element;
                         GUISettingsPanel.updatePanel();
                         break;
 
