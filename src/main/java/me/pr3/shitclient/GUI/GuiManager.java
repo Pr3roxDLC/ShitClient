@@ -9,6 +9,7 @@ import me.pr3.shitclient.plumbing.ModuleManager;
 import me.pr3.shitclient.utils.ColorUtils;
 import me.pr3.shitclient.utils.Log;
 import me.pr3.shitclient.utils.RenderUtils;
+import me.pr3.shitclient.utils.settings.BooleanSetting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
@@ -67,6 +68,25 @@ public class GuiManager {
                 }
                 i++;
             }
+
+            for(GUISettingsPanelButton button : GUISettingsPanel.buttons){
+
+                if(e.getY() > button.x && e.getX() < button.x + button.w){
+
+                    if(e.getY() > button.y && e.getY() < button.y + button.h){
+
+                        if(button.getSetting() instanceof BooleanSetting){
+
+                            ((BooleanSetting)button.getSetting()).setValue(!((BooleanSetting)button.getSetting()).value);
+
+                        }
+
+                    }
+
+                }
+
+            }
+
         }
 
         if(e.getMouseButton() == 1){

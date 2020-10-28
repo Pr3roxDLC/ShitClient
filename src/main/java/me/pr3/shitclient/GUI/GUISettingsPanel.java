@@ -12,6 +12,7 @@ public class GUISettingsPanel {
 
     public static RectWithText settingsPanelElement = (RectWithText) ClickGUI.guiElementList.get(0);
     public static List<Setting> settings = new ArrayList<Setting>();
+    public static List<GUISettingsPanelButton> buttons = new ArrayList<GUISettingsPanelButton>();
     public static Module currentModule = ModuleManager.getModules().get(0);
 
     public static void updatePanel() {
@@ -23,6 +24,8 @@ public class GUISettingsPanel {
         }
 
        settings = currentModule.getSettings();
+
+
 
     }
 

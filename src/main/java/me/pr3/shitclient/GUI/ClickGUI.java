@@ -7,6 +7,7 @@ import me.pr3.shitclient.plumbing.ModuleManager;
 import me.pr3.shitclient.utils.ColorUtils;
 import me.pr3.shitclient.utils.Log;
 import me.pr3.shitclient.utils.RenderUtils;
+import me.pr3.shitclient.utils.settings.BooleanSetting;
 import me.pr3.shitclient.utils.settings.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -76,29 +77,46 @@ public class ClickGUI extends GuiScreen {
         }
     }
 
-    public void renderSettingsPanel(GUISettingsPanel guiSettingsPanel){
+    public void renderSettingsPanel(GUISettingsPanel guiSettingsPanel) {
 
         ScaledResolution sr = new ScaledResolution(mc);
 
         if (Minecraft.getMinecraft().world == null) return;
 
         if (Minecraft.getMinecraft().currentScreen instanceof ClickGUI) {
-            GuiScreen.drawRect(sr.getScaledWidth() - 23, 23, sr.getScaledWidth()  / 2 - 2 , sr.getScaledHeight() - 23, Color.GREEN.getRGB());
-            GuiScreen.drawRect(sr.getScaledWidth() - 25, 25, sr.getScaledWidth()  / 2 , sr.getScaledHeight() - 25, Color.DARK_GRAY.getRGB());
+            GuiScreen.drawRect(sr.getScaledWidth() - 23, 23, sr.getScaledWidth() / 2 - 2, sr.getScaledHeight() - 23, Color.GREEN.getRGB());
+            GuiScreen.drawRect(sr.getScaledWidth() - 25, 25, sr.getScaledWidth() / 2, sr.getScaledHeight() - 25, Color.DARK_GRAY.getRGB());
             RenderUtils.drawLine(GUISettingsPanel.settingsPanelElement.getX() + GUISettingsPanel.settingsPanelElement.getW(),
-                    GUISettingsPanel.settingsPanelElement.getY() + GUISettingsPanel.settingsPanelElement.getH()/2,
-                    sr.getScaledWidth()/2,
-                    sr.getScaledHeight()/2,
+                    GUISettingsPanel.settingsPanelElement.getY() + GUISettingsPanel.settingsPanelElement.getH() / 2,
+                    sr.getScaledWidth() / 2,
+                    sr.getScaledHeight() / 2,
                     1,
-                     ColorUtils.RenderColor);
+                    ColorUtils.RenderColor);
 
-
+            GUISettingsPanel.buttons.clear();
             int y = 37;
-            for(Setting setting : GUISettingsPanel.settings){
-                Log.info("Drew A Setting Named " + setting.name );
-                mc.fontRenderer.drawString(setting.name, sr.getScaledWidth()/ 2 + 12, y, Color.GREEN.getRGB(), false);
+            for (Setting setting : GUISettingsPanel.settings) {
+
+                if (setting instanceof BooleanSetting) {
+                    mc.fontRenderer.drawString(setting.name, sr.getScaledWidth() / 2 + 12, y, Color.GREEN.getRGB(), false);
+                    GUISettingsPanel.buttons.add(new GUISettingsPanelButton(sr.getScaledWidth() - 37 - 12,
+                            y,
+                            12,
+                            12,
+                            setting
+                    ));
+                }
                 y += 12;
             }
+
+            for(GUISettingsPanelButton button: GUISettingsPanel.buttons){
+                int x1 = button.x;
+                int y1 = button.y;
+                int x2 = button.x + button.w;
+                int y2 = button.y + button.h;
+                GuiScreen.drawRect(x1, y1, x2, y2, Color.GREEN.getRGB());
+            }
+
         }
     }
 
@@ -109,9 +127,6 @@ public class ClickGUI extends GuiScreen {
         if (e.getType() != RenderGameOverlayEvent.ElementType.TEXT) return;
         renderSettingsPanel(null);
         renderModules();
-
-
-
 
 
     }
